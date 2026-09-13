@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ff-guild-golory-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 1 --threads 2 --bind 0.0.0.0:$PORT
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: WEB_APP_URL
+        sync: false
